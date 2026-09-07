@@ -1,5 +1,6 @@
 const config = require('./config');
 const commands = require('./commands');
+const chalk = require('chalk');
 
 const cooldowns = new Map();
 
@@ -19,9 +20,23 @@ module.exports = async (sock, msg) => {
     } else {
         const isRented = config.checkRental(from);
         if (!isRented && !isOwner) return;
+
+        if (isRented && text) {
+            const time = new Date().toLocaleTimeString('id-ID', { hour12: false });
+            const shortSender = sender.split('@')[0];
+            const shortGroup = from.split('@')[0].slice(0, 15) + '...'; 
+            
+            console.log(
+                chalk.bgWhite.black(` ${time} `) + 
+                chalk.bgBlue.white(` GC: ${shortGroup} `) + 
+                chalk.cyan(` [${shortSender}] `) + 
+                chalk.white(`» ${text}`)
+            );
+        }
     }
 
     if (!text.startsWith(config.prefix)) return;
+    
 
     if (!isOwner) {
         const now = Date.now();
