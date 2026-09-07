@@ -2,6 +2,7 @@ const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = requi
 const pino = require('pino');
 const readline = require('readline');
 const chalk = require('chalk');
+const qrcode = require('qrcode-terminal');
 const handler = require('./handler');
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
