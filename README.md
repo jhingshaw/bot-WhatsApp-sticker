@@ -44,7 +44,7 @@ pkg update && pkg upgrade -y
 pkg install nodejs ffmpeg git -y
 
 # Clone repository
-git clone [](https://github.com/username/wa-bot-boilerplate-v2.git)
+git clone https://github.com/jhingshaw/bot-WhatsApp-sticker.git
 cd wa-bot-boilerplate-v2
 
 # Install dependencies
