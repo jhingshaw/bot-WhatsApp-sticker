@@ -44,7 +44,6 @@ async function startBot() {
     
     const sock = makeWASocket({
         auth: state,
-        printQRInTerminal: useQR,
         logger: pino({ level: 'silent' }),
         browser: ['Ubuntu', 'Chrome', '20.0.04'],
         syncFullHistory: false
@@ -57,13 +56,20 @@ async function startBot() {
     }
 
     sock.ev.on('connection.update', (update) => {
-        const { connection, lastDisconnect } = update;
+        const { connection, lastDisconnect, qr } = update;
+    
+        if (qr && useQR) {
+            console.clear();
+            console.log(chalk.yellow('\n[!] Scan QR Code di bawah ini menggunakan WhatsApp Anda:\n'));
+            qrcode.generate(qr, { small: true });
+        }
+
         if (connection === 'close') {
             const shouldReconnect = lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut;
             console.log(chalk.red(`[!] Koneksi terputus. Reconnect: ${shouldReconnect}`));
             if (shouldReconnect) startBot();
         } else if (connection === 'open') {
-            if (!state.creds.registered) {
+            if (!state.creds.registered || useQR) {
                 showBanner();
             }
         }
