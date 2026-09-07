@@ -45,7 +45,7 @@ pkg install nodejs ffmpeg git -y
 
 # Clone repository
 git clone https://github.com/jhingshaw/bot-WhatsApp-sticker.git
-cd wa-bot-boilerplate-v2
+cd bot-WhatsApp-sticker
 
 # Install dependencies
 npm install
@@ -58,8 +58,8 @@ npm start
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install nodejs ffmpeg git -y
-git clone [https://github.com/username/wa-bot-boilerplate-v2.git](https://github.com/username/wa-bot-boilerplate-v2.git)
-cd wa-bot-boilerplate-v2
+git clone https://github.com/jhingshaw/bot-WhatsApp-sticker.git
+cd bot-WhatsApp-sticker
 npm install
 npm start
 ```
