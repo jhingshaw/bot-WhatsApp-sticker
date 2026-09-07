@@ -27,6 +27,7 @@ async function startBot() {
     
     let useQR = false;
 
+    // Cek apakah kredensial sudah ada di folder session
     if (!state.creds.registered) {
         console.clear();
         console.log(chalk.bgBlue.white.bold('\n === AUTHENTICATION SETUP === \n'));
@@ -36,10 +37,8 @@ async function startBot() {
         
         if (choice.trim() === '1') {
             useQR = true;
-            console.log(chalk.green('\n[!] Silakan scan QR Code yang muncul...'));
+            console.log(chalk.green('\n[!] Menyiapkan QR Code, mohon tunggu...'));
         }
-    } else {
-        showBanner();
     }
     
     const sock = makeWASocket({
@@ -49,7 +48,7 @@ async function startBot() {
         syncFullHistory: false
     });
 
-    if (!sock.authState.creds.registered && !useQR) {
+    if (!state.creds.registered && !useQR) {
         const phoneNumber = await question(chalk.yellow('\nMasukkan nomor WhatsApp bot (contoh: 628123456789): '));
         const code = await sock.requestPairingCode(phoneNumber.trim());
         console.log(chalk.bgGreen.black(`\n [!] PAIRING CODE ANDA: ${code} \n`));
