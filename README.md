@@ -43,8 +43,8 @@ Jalankan perintah ini satu per satu di aplikasi Termux Anda:
 pkg update && pkg upgrade -y
 pkg install nodejs ffmpeg git -y
 
-# Clone repository (Ganti URL dengan link repo GitHub kamu)
-git clone [https://github.com/username/wa-bot-boilerplate-v2.git](https://github.com/username/wa-bot-boilerplate-v2.git)
+# Clone repository
+git clone [](https://github.com/username/wa-bot-boilerplate-v2.git)
 cd wa-bot-boilerplate-v2
 
 # Install dependencies
@@ -114,5 +114,5 @@ module.exports = {
 
 <div align="center">
   <br>
-  <p>Dibuat dengan 💻 oleh <b>TheRaa</b> (PutzZxJS) | © 2026</p>
+  <p>Dibuat dengan 💻 oleh <b>0xJhingShaw</b> (PutzZxJS) | © 2026</p>
 </div>
